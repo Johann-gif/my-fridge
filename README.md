@@ -25,12 +25,12 @@ Sur my-fridge, il est possible d'effectuer les actions suivantes :
 
 Créer un utilisateur en envoyant à la route **/users/add** les paramètres suivants : (**POST**)
 
-    - pseudo
-    - password
-    - surname
-    - firstname
-    - email
-    - number
+   - pseudo
+   - password
+   - surname
+   - firstname
+   - email
+   - number
 
 - Afficher tous les utilisateurs existant en base via la route **/users** (**GET**)
 
