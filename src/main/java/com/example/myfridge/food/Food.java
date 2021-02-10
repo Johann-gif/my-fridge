@@ -12,6 +12,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
+
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
