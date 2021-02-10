@@ -13,6 +13,9 @@ import java.util.stream.Stream;
 @RestController
 @RequestMapping(path = "/users")
 public class UserController {
+
+    private static final String USER_NOT_FOUND = "User not found :: ";
+
     @Autowired
     private UserRepository userRepository;
 
@@ -24,7 +27,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable int id) throws ResourceNotFoundException {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(USER_NOT_FOUND + id));
 
         return ResponseEntity.ok().body(user);
     }
@@ -32,7 +35,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser (@PathVariable int id) throws ResourceNotFoundException {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(USER_NOT_FOUND + id));
 
         userRepository.delete(user);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
@@ -41,7 +44,7 @@ public class UserController {
     @PutMapping(path="/{id}")
     public ResponseEntity<User> updateUser (@PathVariable int id, @RequestParam(required = false) String pseudo, @RequestParam(required = false) String password, @RequestParam(required = false) String surname, @RequestParam(required = false) String firstname, @RequestParam(required = false) String email, @RequestParam(required = false) String number) throws ResourceNotFoundException {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(USER_NOT_FOUND + id));
 
         if (pseudo != null) {
             user.setPseudo(pseudo);

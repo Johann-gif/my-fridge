@@ -14,6 +14,9 @@ import java.util.List;
 @RequestMapping(path = "/foods")
 public class FoodController {
 
+    private static final String FOOD_NOT_FOUND = "Food not found :: ";
+    private static final String USER_NOT_FOUND = "User not found :: ";
+
     @Autowired
     private FoodRepository foodRepository;
     @Autowired
@@ -27,7 +30,7 @@ public class FoodController {
     @GetMapping("/{id}")
     public ResponseEntity<Food> getFood(@PathVariable int id) throws ResourceNotFoundException {
         Food food = foodRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Food not found :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(FOOD_NOT_FOUND + id));
 
         return ResponseEntity.ok().body(food);
     }
@@ -35,7 +38,7 @@ public class FoodController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFood (@PathVariable int id) throws ResourceNotFoundException {
         Food food = foodRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Food not found :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(FOOD_NOT_FOUND + id));
 
         foodRepository.delete(food);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
@@ -44,7 +47,7 @@ public class FoodController {
     @PutMapping(path="/{id}")
     public ResponseEntity<Food> updateFood (@PathVariable int id, @RequestParam(required = false) String codean, @RequestParam(required = false) String libelle, @RequestParam(required = false) Integer quantite, @RequestParam(required = false) Date peremption, @RequestParam(required = false) Boolean perime) throws ResourceNotFoundException {
         Food food = foodRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Food not found :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(FOOD_NOT_FOUND + id));
 
         if (codean != null) {
             food.setCodean(codean);
@@ -76,7 +79,7 @@ public class FoodController {
         if (perime != null) {
             food.setPerime(perime);
         }
-        food.setUser(userRepository.findById(userid).orElseThrow(() -> new ResourceNotFoundException("User not found :: " + userid)));
+        food.setUser(userRepository.findById(userid).orElseThrow(() -> new ResourceNotFoundException(USER_NOT_FOUND + userid)));
         foodRepository.save(food);
         return ResponseEntity.ok().body(food);
     }
