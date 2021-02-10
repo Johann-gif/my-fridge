@@ -41,7 +41,7 @@ public class FoodController {
                 .orElseThrow(() -> new ResourceNotFoundException(FOOD_NOT_FOUND + id));
 
         foodRepository.delete(food);
-        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(path="/{id}")

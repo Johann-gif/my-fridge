@@ -36,7 +36,7 @@ public class UserController {
                 .orElseThrow(() -> new ResourceNotFoundException(USER_NOT_FOUND + id));
 
         userRepository.delete(user);
-        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(path="/{id}")
