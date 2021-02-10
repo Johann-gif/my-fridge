@@ -101,3 +101,33 @@ Le fichier postman est à la racine du projet et a pour nom **my-fridge.postman_
 - **I** `1/5` Aucune éxigence, les données peuvent être modifiées sans problème à conditon de respecter le format des champs.
 - **D** `3/5` Disponnible à tout moment à condition d'avoir lancé le conteneur Docker mais pas disponnible pour les personnes extérieures au réseau (tourne sur localhost).
 - **T** `1/5` Aucune égixence de traçabilité, aucune action n'est loggée.
+
+### Les vulnérabilités
+
+A l'heure actuelle je me rends compte que mon choix n'a pas été judicieux quant à réalisé le TP sur une API REST en Spring Boot.
+En effet, Spring Boot utilise un module nommé JPA qui empêche les injections SQL, il tombe en erreur au lieu d'éxecuter la requête.
+Par ailleurs je n'ai aucune notion de XSS étant donné qu'il s'agit d'une API et non une WebApp.
+J'ai scanné mon application afin d'en trouver les failles à l'aide d'un utilitaire "Owasp Zap".
+La seule vulnérabilité remonté **au niveau du code** est "X-Content-Type-Options Header Missing".
+Il existe néanmois des problèmes liés à sécurité des données.
+En effet à l'heure actuelle l'application ne dispose d'aucune restriction sur l'accès des données et les données ne sont pas anonymisées.
+Ce qui permet à n'importe qui connaissant les endpoints de reccueillir tout type de données sur les différents utilisateurs présents en base.
+
+### Sonar Cloud
+
+Afin de corriger l'ensemble des code smell et des bugs éventuels j'ai ajouté Sonar Cloud au projet.
+J'avais dans l'optique qu'il repère également une ou deux vulnérabilités mais ce n'est pas le cas.
+J'ai également ajouté quelques tests d'intégration à l'application,on les retrouve bien sur Sonar.
+
+
+### CodeQl
+
+Comme vous l'avez expressement demandé dans votre mail j'ai rajouté CodeQl à mon repository git.
+Il reste néanmoins un problème lié à la compilation Maven.
+J'ai suivi la documentation mise à disposition mais impossible de le faire tourner jusqu'à terme.
+
+### DependaBot
+
+J'ai également rajouté DépendaBot à mon repository git suite à votre mail.
+Je n'ai néanmoins reçu aucun mail depuis lors m'indiquant des problèmes de dépendances.
+
