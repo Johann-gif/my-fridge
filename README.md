@@ -146,8 +146,8 @@ J'ai également ajouté quelques tests d'intégration à l'application,on les re
 ### CodeQL
 
 Comme vous l'avez expressement demandé dans votre mail j'ai rajouté CodeQL à mon repository git.
-Il reste néanmoins un problème lié à la compilation Maven.
-J'ai suivi la documentation mise à disposition mais impossible de le faire tourner jusqu'à terme.
+Il fonctionne enfin en compilation custom' !
+Le workflow se déroule jusqu'à la fin sans encombre.
 
 ### DependaBot
 
