@@ -1,4 +1,4 @@
-package com.example.myfridge.User;
+package com.example.myfridge.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.apache.velocity.exception.ResourceNotFoundException;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(path = "/users")

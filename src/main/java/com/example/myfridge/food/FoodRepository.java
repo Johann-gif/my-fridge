@@ -1,4 +1,4 @@
-package com.example.myfridge.Food;
+package com.example.myfridge.food;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

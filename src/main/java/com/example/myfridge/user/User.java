@@ -1,4 +1,4 @@
-package com.example.myfridge.User;
+package com.example.myfridge.user;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

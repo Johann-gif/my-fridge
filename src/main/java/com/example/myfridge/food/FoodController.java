@@ -1,6 +1,6 @@
-package com.example.myfridge.Food;
+package com.example.myfridge.food;
 
-import com.example.myfridge.User.UserRepository;
+import com.example.myfridge.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

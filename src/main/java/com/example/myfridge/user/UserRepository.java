@@ -1,4 +1,4 @@
-package com.example.myfridge.User;
+package com.example.myfridge.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

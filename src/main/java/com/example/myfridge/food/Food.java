@@ -1,10 +1,9 @@
-package com.example.myfridge.Food;
+package com.example.myfridge.food;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.example.myfridge.User.User;
+import com.example.myfridge.user.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
