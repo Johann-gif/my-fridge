@@ -38,12 +38,12 @@ class MyFridgeApplicationTests {
     }
 
     @Test
-    public void shouldReturnUsers() throws Exception {
+    void shouldReturnUsers() throws Exception {
         this.mockMvc.perform(get("/users")).andDo(print()).andExpect(status().isOk());
     }
 
     @Test
-    public void shouldReturnFoods() throws Exception {
+    void shouldReturnFoods() throws Exception {
         this.mockMvc.perform(get("/foods")).andDo(print()).andExpect(status().isOk());
     }
 
