@@ -152,4 +152,4 @@ Le workflow se déroule jusqu'à la fin sans encombre.
 ### DependaBot
 
 J'ai également ajouté DépendaBot à mon repository git suite à votre mail.
-Je n'ai néanmoins reçu aucun mail depuis lors m'indiquant des problèmes de dépendances.
+Après paramétrage il a généré plusieurs pull request afin de patcher certain manque de mon API.
