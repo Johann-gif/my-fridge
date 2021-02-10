@@ -23,22 +23,22 @@ class MyFridgeApplicationTests {
     private FoodController foodController;
     @Autowired
     private MockMvc mockMvc;
-
+    // Test userController existe
     @Test
     void contextLoadsUser() {
         assertThat(userController).isNotNull();
     }
-
+    // Test foodController existe
     @Test
     void contextLoadsFood() {
         assertThat(foodController).isNotNull();
     }
-
+    // Test sur l'endpoint /users renvoie 200
     @Test
     void shouldReturnUsers() throws Exception {
         this.mockMvc.perform(get("/users")).andDo(print()).andExpect(status().isOk());
     }
-
+    // Test sur l'endpoint /foods renvoie 200
     @Test
     void shouldReturnFoods() throws Exception {
         this.mockMvc.perform(get("/foods")).andDo(print()).andExpect(status().isOk());

@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.util.List;
 
 @RestController
+// Je définis l'endpoint générique de la classe sur /foods [GET]
 @RequestMapping(path = "/foods")
 public class FoodController {
 
@@ -22,11 +23,13 @@ public class FoodController {
     @Autowired
     private UserRepository userRepository;
 
+    // Je définis sur /foods/ la liste de toutes les foods [GET]
     @GetMapping
     public List<Food> getFoods() {
         return foodRepository.findAll();
     }
 
+    // Je définis sur /foods/{{id}} la recherche d'une food par son id [GET]
     @GetMapping("/{id}")
     public ResponseEntity<Food> getFood(@PathVariable int id) throws ResourceNotFoundException {
         Food food = foodRepository.findById(id)
@@ -35,6 +38,7 @@ public class FoodController {
         return ResponseEntity.ok().body(food);
     }
 
+    // Je définis sur /foods/{{id}} la suppression d'une food par son id [DEL]
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFood (@PathVariable int id) throws ResourceNotFoundException {
         Food food = foodRepository.findById(id)
@@ -44,6 +48,7 @@ public class FoodController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // Je définis sur /foods/{{id}} la modification d'une food par son id [PUT]
     @PutMapping(path="/{id}")
     public ResponseEntity<Food> updateFood (@PathVariable int id, @RequestParam(required = false) String codean, @RequestParam(required = false) String libelle, @RequestParam(required = false) Integer quantite, @RequestParam(required = false) Date peremption, @RequestParam(required = false) Boolean perime) throws ResourceNotFoundException {
         Food food = foodRepository.findById(id)
@@ -68,6 +73,7 @@ public class FoodController {
         return ResponseEntity.ok().body(food);
     }
 
+    // Je définis sur /foods/add la création d'une food [POST]
     @PostMapping("/add")
     public ResponseEntity<Food> addPost(@RequestParam String codean, @RequestParam String libelle, @RequestParam Integer quantite, @RequestParam Date peremption, @RequestParam(required = false, defaultValue = "false") Boolean perime, @RequestParam int userid)  throws ResourceNotFoundException {
         Food food = new Food();
@@ -84,18 +90,23 @@ public class FoodController {
         return ResponseEntity.ok().body(food);
     }
 
+    // Je définis sur /foods/search/{{libelle}} la recherche d'une food par son libelle [GET]
     @GetMapping("/search/{libelle}")
     public ResponseEntity<List<Food>> searchFood(@PathVariable String libelle) {
         List<Food> foodsByLibelle = foodRepository.findByLibelleIsContainingIgnoreCase(libelle);
 
         return ResponseEntity.ok().body(foodsByLibelle);
     }
+
+    // Je définis sur /foods/user/{{id}} la recherche d'une food par son id d'utilisateur [GET]
     @GetMapping("/user/{id}")
     public ResponseEntity<List<Food>> searchFoodByUser(@PathVariable int id) {
         List<Food> foodsByUser = foodRepository.getFoodsByUser(id);
 
         return ResponseEntity.ok().body(foodsByUser);
     }
+
+    // Je définis sur /foods/codean/{{codean}} la recherche d'une food par son codean [GET]
     @GetMapping("/codean/{codean}")
     public ResponseEntity<List<Food>> searchFoodByUser(@PathVariable String codean) {
         List<Food> foodsByUser = foodRepository.findByCodean(codean);

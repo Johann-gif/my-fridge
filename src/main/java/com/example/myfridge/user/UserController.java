@@ -9,6 +9,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import java.util.List;
 
 @RestController
+// Je définis l'endpoint générique de la classe sur /users [GET]
 @RequestMapping(path = "/users")
 public class UserController {
 
@@ -17,11 +18,13 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    // Je définis sur /users/ la liste de toutes les users [GET]
     @GetMapping
     public List<User> getUsers() {
         return userRepository.findAll();
     }
 
+    // Je définis sur /users/{{id}} la recherche d'un user par son id [GET]
     @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable int id) throws ResourceNotFoundException {
         User user = userRepository.findById(id)
@@ -29,7 +32,7 @@ public class UserController {
 
         return ResponseEntity.ok().body(user);
     }
-
+    // Je définis sur /users/{{id}} la suppression d'un user par son id [DEL]
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser (@PathVariable int id) throws ResourceNotFoundException {
         User user = userRepository.findById(id)
@@ -38,7 +41,7 @@ public class UserController {
         userRepository.delete(user);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
+    // Je définis sur /users/{{id}} la modification d'un user par son id [PUT]
     @PutMapping(path="/{id}")
     public ResponseEntity<User> updateUser (@PathVariable int id, @RequestParam(required = false) String pseudo, @RequestParam(required = false) String password, @RequestParam(required = false) String surname, @RequestParam(required = false) String firstname, @RequestParam(required = false) String email, @RequestParam(required = false) String number) throws ResourceNotFoundException {
         User user = userRepository.findById(id)
@@ -65,7 +68,7 @@ public class UserController {
         userRepository.save(user);
         return ResponseEntity.ok().body(user);
     }
-
+    // Je définis sur /users/add la création d'un user [POST]
     @PostMapping("/add")
     public ResponseEntity<User> addUser(@RequestParam String pseudo, @RequestParam String password, @RequestParam String surname, @RequestParam String firstname, @RequestParam String email,@RequestParam(required = false) String number)  throws ResourceNotFoundException {
         User user = new User();
@@ -81,7 +84,7 @@ public class UserController {
         userRepository.save(user);
         return ResponseEntity.ok().body(user);
     }
-
+    // Je définis sur /users/search/{{name}} la recherche d'un user par son nom ou prénom [GET]
     @GetMapping("/search/{name}")
     public ResponseEntity<List<User>> searchUser(@PathVariable String name) {
         List<User> usersByName = userRepository.findByFirstnameStartsWithIgnoreCaseOrSurnameStartsWithIgnoreCase(name, name);

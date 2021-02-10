@@ -7,8 +7,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface FoodRepository extends JpaRepository<Food, Integer> {
+    // Résultat JPA
     List<Food> findByLibelleIsContainingIgnoreCase(String libelle);
-
+    // Résultat custom' avec query générée manuellement
     List<Food> findByCodean(String codean);
     @Query(value = "SELECT * FROM food WHERE userid = :id",
             nativeQuery = true)
