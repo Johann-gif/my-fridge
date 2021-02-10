@@ -62,7 +62,7 @@ public class UserController {
             user.setEmail(email);
         }
         if (number != null) {
-            user.setMob_number(number);
+            user.setMobnumber(number);
         }
         userRepository.save(user);
         return ResponseEntity.ok().body(user);
@@ -78,7 +78,7 @@ public class UserController {
         user.setFirstname(firstname);
         user.setEmail(email);
         if (number != null) {
-            user.setMob_number(number);
+            user.setMobnumber(number);
         }
         userRepository.save(user);
         return ResponseEntity.ok().body(user);

@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Johann-gif_my-fridge&metric=alert_status)](https://sonarcloud.io/dashboard?id=Johann-gif_my-fridge)
+
 # my-fridge
 
 ## Description du projet

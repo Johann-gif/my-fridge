@@ -1,10 +1,10 @@
-INSERT INTO user (pseudo, password, surname, firstname, email, mob_number)
+INSERT INTO user (pseudo, password, surname, firstname, email, mobnumber)
 VALUES ('jojodu59', 'MOTDEPASSE', 'De Almeida', 'Johann', 'johann.de-almeida@lacatholille.fr', null);
 
-INSERT INTO user (pseudo, password, surname, firstname, email, mob_number)
+INSERT INTO user (pseudo, password, surname, firstname, email, mobnumber)
 VALUES ('giannini', 'PASSWORD123', 'Giudice', 'Gianni', 'gianni.giudice@lacatholille.fr', null);
 
-INSERT INTO user (pseudo, password, surname, firstname, email, mob_number)
+INSERT INTO user (pseudo, password, surname, firstname, email, mobnumber)
 VALUES ('sebdez', 'clairdelune12_', 'Guidez', 'Sébastien', 'sebastien.guidez@lacatholille.fr', null);
 
 INSERT INTO food (codean, libelle, quantite, peremption, userid)
