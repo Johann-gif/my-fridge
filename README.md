@@ -119,12 +119,20 @@ J'ai scanné mon application afin d'en trouver les failles à l'aide d'un utilit
 La seule vulnérabilité remonté **au niveau du code** est "X-Content-Type-Options Header Missing".
 
 Il existe néanmois des problèmes liés à sécurité des données.
-
 En effet à l'heure actuelle l'application ne dispose d'aucune restriction sur l'accès des données et les données ne sont pas anonymisées.
-
 Ce qui permet à n'importe qui connaissant les endpoints de reccueillir tout type de données sur les différents utilisateurs présents en base.
 
+La solution aurait été de gérer des droits utilisateurs à l'aide de https://auth0.com/fr/.
+Limitant ainsi l'accès à certain endpoints en fonction du rôle de l'utilisateur qui s'y connecte.
+
+Pour se faire il aurait du y avoir également une phase de connexion, de mon côté n'ayant pas maitrisé cette notion dans le cours de Monsieur SIX j'ai préféré éviter de l'implémenter.
+
 On peut aussi remonté qu'il manque une validation de certificat quant à l'url de l'application car oui l'url est toujours en http et non en https.
+Il aurait été facile de le faire à l'aide de https://letsencrypt.org/fr/ si l'applicatif avait été hébergé sur heroku par exemple.
+
+L'hébergement n'étant pas une nécessité étant donné que l'application est lancée à partir d'un Docker.
+
+Afin de combler ce manque de vulnérabilité j'ai tenté d'intégrer des outils permettant de valider la qualité du code, trouver les vulnérabilités si elles existent et d'autres outils pratiques tels que Swagger permettant de documenter l'api de manière dynamique.
 
 ### Sonar Cloud
 
@@ -137,11 +145,11 @@ J'ai également ajouté quelques tests d'intégration à l'application,on les re
 
 ### CodeQL
 
-Comme vous l'avez expressement demandé dans votre mail j'ai rajouté CodeQl à mon repository git.
+Comme vous l'avez expressement demandé dans votre mail j'ai rajouté CodeQL à mon repository git.
 Il reste néanmoins un problème lié à la compilation Maven.
 J'ai suivi la documentation mise à disposition mais impossible de le faire tourner jusqu'à terme.
 
 ### DependaBot
 
-J'ai également rajouté DépendaBot à mon repository git suite à votre mail.
+J'ai également ajouté DépendaBot à mon repository git suite à votre mail.
 Je n'ai néanmoins reçu aucun mail depuis lors m'indiquant des problèmes de dépendances.
